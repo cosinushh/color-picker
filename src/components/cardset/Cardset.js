@@ -1,23 +1,24 @@
 import "./Cardset.css";
 import Colorcard from "../colorcard/Colorcard";
+import Form from "../form/Form";
 
-function Cardset({ colors }) {
+function Cardset({ colors, addColor, removeColor }) {
   return (
-    <ul className="cardset">
+    <section className="cardset">
       <h2 className="cardset__title">Cardset Title</h2>
-      {/* Colorpicker */}
-      <div className="cardset__colorcards">
+      <Form addColor={addColor} />
+      <ul className="cardset__colorcards">
         {colors.map((color) => {
           return (
             <Colorcard
               key={color.id}
-              hexValue={color.hexValue}
-              colorName={color.colorName}
+              colorObject={color}
+              removeColor={removeColor}
             />
           );
         })}
-      </div>
-    </ul>
+      </ul>
+    </section>
   );
 }
 

@@ -1,0 +1,9 @@
+.form {
+  width: 350px;
+  background-color: white;
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem;
+  margin: 2rem;
+}

@@ -1,11 +1,14 @@
 .cardset {
-  background-color: rgb(230, 229, 228);
+  background-color: rgb(241, 241, 241);
   padding: 2rem;
   margin: 2rem;
 }
 
 .cardset__title {
   margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  text-align: left;
 }
 
 .cardset__colorcards {
