@@ -10,10 +10,10 @@ function App() {
     { id: 5, hexValue: "#90C6BA", colorName: "Shadow Green" },
   ];
   return (
-    <div className="App">
+    <main className="App">
       <Cardset colors={initialColors} />
       <Cardset colors={initialColors} />
-    </div>
+    </main>
   );
 }
 

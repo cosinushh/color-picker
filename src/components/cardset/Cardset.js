@@ -2,8 +2,8 @@ import "./Cardset.css";
 import Colorcard from "../colorcard/Colorcard";
 
 function Cardset({ colors }) {
-   return (
-    <article className="cardset">
+  return (
+    <ul className="cardset">
       <h2 className="cardset__title">Cardset Title</h2>
       {/* Colorpicker */}
       <div className="cardset__colorcards">
@@ -17,7 +17,7 @@ function Cardset({ colors }) {
           );
         })}
       </div>
-    </article>
+    </ul>
   );
 }
 
