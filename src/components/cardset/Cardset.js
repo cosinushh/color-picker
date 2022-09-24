@@ -1,15 +1,21 @@
 import "./Cardset.css";
 import Colorcard from "../colorcard/Colorcard";
 
-function Cardset() {
-  return (
+function Cardset({ colors }) {
+   return (
     <article className="cardset">
       <h2 className="cardset__title">Cardset Title</h2>
       {/* Colorpicker */}
       <div className="cardset__colorcards">
-        <Colorcard />
-        <Colorcard />
-        <Colorcard />
+        {colors.map((color) => {
+          return (
+            <Colorcard
+              key={color.id}
+              hexValue={color.hexValue}
+              colorName={color.colorName}
+            />
+          );
+        })}
       </div>
     </article>
   );
