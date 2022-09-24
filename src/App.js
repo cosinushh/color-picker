@@ -1,11 +1,11 @@
 import "./App.css";
-import Cardsset from "./components/cardsset/Cardsset.js";
+import Cardset from "./components/cardset/Cardset.js";
 
 function App() {
   return (
     <div className="App">
-      <Cardsset />
-      <Cardsset />
+      <Cardset />
+      <Cardset />
     </div>
   );
 }

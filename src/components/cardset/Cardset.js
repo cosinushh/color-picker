@@ -1,10 +1,10 @@
-import "./Cardsset.css";
+import "./Cardset.css";
 import Colorcard from "../colorcard/Colorcard";
 
-function Cardsset() {
+function Cardset() {
   return (
-    <article className="cardsset">
-      <h2 className="cardsset__title">Cardset Title</h2>
+    <article className="cardset">
+      <h2 className="cardset__title">Cardset Title</h2>
       {/* Colorpicker */}
       <div className="cardset__colorcards">
         <Colorcard />
@@ -15,4 +15,4 @@ function Cardsset() {
   );
 }
 
-export default Cardsset;
+export default Cardset;
