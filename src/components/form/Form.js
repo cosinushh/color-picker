@@ -1,12 +1,12 @@
 import "./Form.css";
 import { useState } from "react";
 
-function Form({ addColor }) {
+function Form({ addColor, setId }) {
   const [selectedColor, setSelectedColor] = useState("#CCCCCC");
 
   function handleSubmit(event) {
     event.preventDefault();
-    addColor(selectedColor.toUpperCase());
+    addColor(selectedColor.toUpperCase(), setId);
   }
 
   return (
