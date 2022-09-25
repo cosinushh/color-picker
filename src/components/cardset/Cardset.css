@@ -1,0 +1,44 @@
+.cardset {
+  background-color: rgb(241, 241, 241);
+  padding: 2rem;
+  margin: 2rem;
+
+}
+
+.cardset__title {
+  margin: 0.5rem 2rem 2rem 2rem;
+  width: 90%;
+  display: block;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 0.1rem;
+  border: none;
+  background: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cardset__colorcards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.colorcard__button {
+  height: 40px;
+  width: 150px;
+  background-color: rgb(41, 41, 41);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 20px;
+  margin: 3rem auto 1.5rem auto;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  transition: 300ms ease-in-out;
+}
+
+.colorcard__button:hover {
+  background-color: rgb(78, 78, 78);
+}
