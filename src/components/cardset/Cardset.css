@@ -2,10 +2,12 @@
   background-color: rgb(241, 241, 241);
   padding: 2rem;
   margin: 2rem;
+
 }
 
 .cardset__title {
   margin: 0.5rem 2rem 2rem 2rem;
+  width: 90%;
   display: block;
   text-transform: uppercase;
   text-align: left;
