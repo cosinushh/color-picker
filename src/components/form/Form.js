@@ -2,7 +2,7 @@ import "./Form.css";
 import { useState } from "react";
 
 function Form({ addColor, setId }) {
-  const [selectedColor, setSelectedColor] = useState("#CCCCCC");
+  const [selectedColor, setSelectedColor] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,7 +20,7 @@ function Form({ addColor, setId }) {
           onChange={(event) => {
             setSelectedColor(event.target.value);
           }}
-          value={selectedColor}
+          value={selectedColor.toUpperCase()}
         />
       </label>
       <label className="form__label form--space" htmlFor="colorText">
@@ -34,7 +34,7 @@ function Form({ addColor, setId }) {
         onChange={(event) => {
           setSelectedColor(event.target.value);
         }}
-        defaultValue={selectedColor}
+        defaultValue={selectedColor.toUpperCase()}
       />
       <button className="form__button" type="submit">
         Add

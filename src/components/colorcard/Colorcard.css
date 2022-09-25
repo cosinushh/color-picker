@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 4px,
-  rgba(0, 0, 0, 0.3) 0px 7px 13px -3px;;
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px;
   cursor: copy;
 }
 
@@ -40,7 +40,7 @@
   background: none;
   border: none;
   align-self: flex-end;
-  margin: 0.5rem 0.2rem;
+  margin: 0.3rem 0.2rem;
 }
 
 .colorcard__delete-icon {
@@ -65,3 +65,4 @@
 .card__delete--active {
   color: yellow;
 }
+

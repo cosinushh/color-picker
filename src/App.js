@@ -3,7 +3,7 @@ import Cardset from "./components/cardset/Cardset.js";
 import { useState, useEffect } from "react";
 
 function App() {
-  const initialColors = [
+  /* const initialColors = [
     {
       id: "a65639eb-1319-46e5-ab15-810f70e9f31a",
       setId: "b4bd938f-88c3-4891-ac92-130f2ab99bb3",
@@ -49,21 +49,20 @@ function App() {
       id: "ce8b988f-8c4a-4a4c-b18b-790b38a139b9",
       setName: "Set 3",
     },
-  ];
+  ]; */
 
-  const [colors, setColors] = useState(
-    /* readLocalStorage() ?? */ initialColors
-  );
-  const [sets, setSets] = useState(initialSets);
+  const [colors, setColors] = useState(readLocalStorage("colors") ?? []);
+  const [sets, setSets] = useState(readLocalStorage("sets") ?? []);
 
-  function readLocalStorage() {
-    const localStorageData = localStorage.getItem("colors");
+  function readLocalStorage(storageName) {
+    const localStorageData = localStorage.getItem(storageName);
     return JSON.parse(localStorageData);
   }
 
   useEffect(() => {
     localStorage.setItem("colors", JSON.stringify(colors));
-  }, [colors]);
+    localStorage.setItem("sets", JSON.stringify(sets));
+  }, [colors, sets]);
 
   async function getColorName(hexValue) {
     const modifiedHexValue = hexValue.substring(1);
@@ -96,11 +95,11 @@ function App() {
   }
 
   async function changeColor(colorId, newHex) {
-    // const newColorName = await getColorName(newHex);
+    const newColorName = await getColorName(newHex);
     setColors(
       colors.map((color) => {
         if (color.id === colorId) {
-          return { ...color, hexValue: newHex /* colorName: newColorName */ };
+          return { ...color, hexValue: newHex, colorName: newColorName };
         } else {
           return color;
         }
@@ -115,6 +114,25 @@ function App() {
     ]);
   }
 
+  function changeSetName(setId, NewSetName) {
+    setSets(
+      sets.map((set) => {
+        if (set.id === setId) {
+          return { ...set, setName: NewSetName };
+        } else {
+          return set;
+        }
+      })
+    );
+  }
+
+  function removeSet(setId) {
+    const newSets = sets.filter((set) => {
+      return setId !== set.id;
+    });
+    setSets(newSets);
+  }
+
   return (
     <main className="App">
       {sets.map((set) => {
@@ -126,12 +144,16 @@ function App() {
             removeColor={removeColor}
             changeColor={changeColor}
             addNewSet={addNewSet}
+            changeSetName={changeSetName}
+            removeSet={removeSet}
             key={set.id}
             id={set.id}
           />
         );
       })}
-      <button onClick={addNewSet}>New Set</button>
+      <button className="app__button" onClick={addNewSet}>
+        New Set
+      </button>
     </main>
   );
 }
