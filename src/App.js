@@ -30,7 +30,24 @@ function App() {
       colorName: "Shadow Green",
     },
   ];
+
+  const initialSets = [
+    {
+      id: Math.random().toString(36).substring(2),
+      setName: "Set 1",
+    },
+    {
+      id: Math.random().toString(36).substring(2),
+      setName: "Set 2",
+    },
+    {
+      id: Math.random().toString(36).substring(2),
+      setName: "Set 3",
+    },
+  ];
+
   const [colors, setColors] = useState(readLocalStorage() ?? initialColors);
+  const [sets, setSets] = useState(initialSets);
 
   function readLocalStorage() {
     const localStorageData = localStorage.getItem("colors");
@@ -71,11 +88,11 @@ function App() {
   }
 
   async function changeColor(colorId, newHex) {
-    const newColorName = await getColorName(newHex);
+    // const newColorName = await getColorName(newHex);
     setColors(
       colors.map((color) => {
         if (color.id === colorId) {
-          return { ...color, hexValue: newHex, colorName: newColorName };
+          return { ...color, hexValue: newHex /* colorName: newColorName */ };
         } else {
           return color;
         }
@@ -85,13 +102,16 @@ function App() {
 
   return (
     <main className="App">
-      <Cardset
-        colors={colors}
-        addColor={addColor}
-        removeColor={removeColor}
-        changeColor={changeColor}
-      />
-      <Cardset colors={colors} />
+      {sets.map((set) => {
+        return (
+          <Cardset
+            colors={colors}
+            addColor={addColor}
+            removeColor={removeColor}
+            changeColor={changeColor}
+          />
+        );
+      })}
     </main>
   );
 }

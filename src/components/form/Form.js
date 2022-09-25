@@ -2,13 +2,11 @@ import "./Form.css";
 import { useState } from "react";
 
 function Form({ addColor }) {
-  const [selectedColor, setSelectedColor] = useState([]);
+  const [selectedColor, setSelectedColor] = useState("#CCCCCC");
 
   function handleSubmit(event) {
     event.preventDefault();
-    // const formData = new FormData(event.target);
-    // const data = Object.fromEntries(formData);
-    addColor(selectedColor[0].toUpperCase());
+    addColor(selectedColor.toUpperCase());
   }
 
   return (
@@ -20,7 +18,7 @@ function Form({ addColor }) {
           name="colorPicker"
           id="colorPicker"
           onChange={(event) => {
-            setSelectedColor([event.target.value]);
+            setSelectedColor(event.target.value);
           }}
           value={selectedColor}
         />
@@ -34,7 +32,7 @@ function Form({ addColor }) {
         name="colorText"
         id="colorText"
         onChange={(event) => {
-          setSelectedColor([event.target.value]);
+          setSelectedColor(event.target.value);
         }}
         defaultValue={selectedColor}
       />
