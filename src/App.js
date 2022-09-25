@@ -100,18 +100,28 @@ function App() {
     );
   }
 
+  function addNewSet() {
+    setSets([
+      ...sets,
+      { id: Math.random().toString(36).substring(2), setName: "New Set" },
+    ]);
+  }
+
   return (
     <main className="App">
       {sets.map((set) => {
         return (
           <Cardset
+            title={set.setName}
             colors={colors}
             addColor={addColor}
             removeColor={removeColor}
             changeColor={changeColor}
+            addNewSet={addNewSet}
           />
         );
       })}
+      <button onClick={addNewSet}>New Set</button>
     </main>
   );
 }

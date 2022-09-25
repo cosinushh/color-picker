@@ -3,3 +3,7 @@
   display: grid;
 }
 
+button {
+  height: 50px;
+  margin: 3rem;
+}
