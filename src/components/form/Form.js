@@ -2,16 +2,25 @@ import "./Form.css";
 import { useState } from "react";
 
 function Form({ addColor, setId }) {
+  //
+  // --- STATES ---
+
   const [selectedColor, setSelectedColor] = useState("");
+
+  //
+  // --- HANDLES ---
 
   function handleSubmit(event) {
     event.preventDefault();
     addColor(selectedColor.toUpperCase(), setId);
   }
 
+  //
+  // --- MAIN ---
+
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <label className="form__label">
+      <label>
         Select a color:{" "}
         <input
           type="color"
@@ -23,7 +32,7 @@ function Form({ addColor, setId }) {
           value={selectedColor.toUpperCase()}
         />
       </label>
-      <label className="form__label form--space" htmlFor="colorText">
+      <label className="form--space" htmlFor="colorText">
         or enter a color code:
       </label>
       <input

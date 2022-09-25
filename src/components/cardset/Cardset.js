@@ -12,8 +12,13 @@ function Cardset({
   changeSetName,
   removeSet,
 }) {
+  
+  //
+  // --- MAIN ---
+  
   return (
     <section className="cardset">
+      
       <input
         className="cardset__title"
         type="text"
@@ -23,7 +28,9 @@ function Cardset({
           changeSetName(id, newSetName);
         }}
       />
+
       <Form addColor={addColor} setId={id} />
+
       <ul className="cardset__colorcards">
         {colors.map((color) => {
           return (
@@ -36,6 +43,7 @@ function Cardset({
           );
         })}
       </ul>
+
       <button
         type="button"
         className="colorcard__button"

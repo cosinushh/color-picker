@@ -51,8 +51,14 @@ function App() {
     },
   ]; */
 
+  //
+  // --- STATES ---
+
   const [colors, setColors] = useState(readLocalStorage("colors") ?? []);
   const [sets, setSets] = useState(readLocalStorage("sets") ?? []);
+
+  //
+  // --- LOCAL STORAGE ---
 
   function readLocalStorage(storageName) {
     const localStorageData = localStorage.getItem(storageName);
@@ -61,8 +67,14 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("colors", JSON.stringify(colors));
+  }, [colors]);
+
+  useEffect(() => {
     localStorage.setItem("sets", JSON.stringify(sets));
-  }, [colors, sets]);
+  }, [sets]);
+
+  //
+  // --- COLOR FUNCTIONS ---
 
   async function getColorName(hexValue) {
     const modifiedHexValue = hexValue.substring(1);
@@ -107,6 +119,9 @@ function App() {
     );
   }
 
+  //
+  // --- SET FUNCTIONS ---
+
   function addNewSet() {
     setSets([
       ...sets,
@@ -132,6 +147,9 @@ function App() {
     });
     setSets(newSets);
   }
+
+  //
+  // --- MAIN ---
 
   return (
     <main className="App">

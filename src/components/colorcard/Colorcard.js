@@ -2,17 +2,25 @@ import "./Colorcard.css";
 import { useState } from "react";
 
 function Colorcard({ singleColor, removeColor, changeColor }) {
+  //
+  // --- STATES ---
+  
   const [showElement, setShowElement] = useState(false);
+
+  //
+  // --- HANDLES ---
 
   function clickHandle(event) {
     navigator.clipboard.writeText(singleColor.hexValue);
-    console.log("copied!");
     /* KANN MAN DAS EIN- UND AUSBLENDEN DER COPY-MESSAGE SO MACHEN? */
     setShowElement(true);
     setTimeout(() => {
       setShowElement(false);
     }, 750);
   }
+
+  //
+  // --- MAIN ---
 
   return (
     <li
@@ -35,6 +43,7 @@ function Colorcard({ singleColor, removeColor, changeColor }) {
           <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
         </svg>
       </button>
+
       {showElement && <p className="colorcard__copied">copied</p>}
 
       <div className="colorcard__textarea">
