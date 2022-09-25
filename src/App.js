@@ -1,6 +1,6 @@
 import "./App.css";
 import Cardset from "./components/cardset/Cardset.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const initialColors = [
@@ -30,18 +30,37 @@ function App() {
       colorName: "Shadow Green",
     },
   ];
-  const [colors, setColors] = useState(initialColors);
+  const [colors, setColors] = useState(readLocalStorage() ?? initialColors);
+
+  function readLocalStorage() {
+    const localStorageData = localStorage.getItem("colors");
+    return JSON.parse(localStorageData);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("colors", JSON.stringify(colors));
+  }, [colors]);
+
+  async function getColorName(hexValue, callbackFunction) {
+    const modifiedHexValue = hexValue.substring(1);
+    const response = await fetch(
+      `https://www.thecolorapi.com/id?hex=${modifiedHexValue}`
+    );
+    const data = await response.json();
+    //console.log(data.name.value);
+  }
 
   function addColor(newColor) {
+    const newColorName = getColorName(newColor);
     setColors([
-      ...colors,
       {
         id: Math.random().toString(36).substring(2),
         hexValue: newColor,
-        colorName: "Default Color",
+        colorName: "Default",
       },
+      ...colors,
     ]);
-    console.log(colors);
+    console.log(newColorName);
   }
 
   function removeColor(colorId) {
@@ -52,9 +71,27 @@ function App() {
     console.log(colors);
   }
 
+  function changeColor(colorId, newHex) {
+    setColors(
+      colors.map((color) => {
+        if (color.id === colorId) {
+          return { ...color, hexValue: newHex };
+        } else {
+          return color;
+        }
+      })
+    );
+    //console.log(colors);
+  }
+
   return (
     <main className="App">
-      <Cardset colors={colors} addColor={addColor} removeColor={removeColor} />
+      <Cardset
+        colors={colors}
+        addColor={addColor}
+        removeColor={removeColor}
+        changeColor={changeColor}
+      />
       <Cardset colors={colors} />
     </main>
   );

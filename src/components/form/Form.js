@@ -13,15 +13,23 @@ function Form({ addColor }) {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
+      <label className="form__label">
+        Select a color:{" "}
+        <input
+          type="color"
+          name="colorPicker"
+          id="colorPicker"
+          onChange={(event) => {
+            setSelectedColor([event.target.value]);
+          }}
+          value={selectedColor}
+        />
+      </label>
+      <label className="form__label form--space" htmlFor="colorText">
+        or enter a color code:
+      </label>
       <input
-        type="color"
-        name="colorPicker"
-        onChange={(event) => {
-          setSelectedColor([event.target.value]);
-        }}
-        value={selectedColor}
-      />
-      <input
+        className="form__input"
         type="text"
         name="colorText"
         id="colorText"
@@ -30,7 +38,9 @@ function Form({ addColor }) {
         }}
         defaultValue={selectedColor}
       />
-      <button type="submit">Add</button>
+      <button className="form__button" type="submit">
+        Add
+      </button>
     </form>
   );
 }

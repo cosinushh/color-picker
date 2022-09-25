@@ -2,7 +2,7 @@ import "./Cardset.css";
 import Colorcard from "../colorcard/Colorcard";
 import Form from "../form/Form";
 
-function Cardset({ colors, addColor, removeColor }) {
+function Cardset({ colors, addColor, removeColor, changeColor }) {
   return (
     <section className="cardset">
       <h2 className="cardset__title">Cardset Title</h2>
@@ -12,8 +12,9 @@ function Cardset({ colors, addColor, removeColor }) {
           return (
             <Colorcard
               key={color.id}
-              colorObject={color}
+              singleColor={color}
               removeColor={removeColor}
+              changeColor={changeColor}
             />
           );
         })}

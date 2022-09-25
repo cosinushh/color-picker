@@ -5,10 +5,10 @@
 }
 
 .cardset__title {
-  margin-bottom: 1.5rem;
-  margin-top: 0.5rem;
+  margin: 0.5rem 2rem 2rem 2rem;
   text-transform: uppercase;
   text-align: left;
+  letter-spacing: 0.1rem;
 }
 
 .cardset__colorcards {

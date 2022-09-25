@@ -1,9 +1,40 @@
 .form {
-  width: 350px;
+  width: 15rem;
   background-color: white;
   display: grid;
-  gap: 1rem;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 0;
   margin: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px;
+}
+
+.form__label {
+}
+
+.form__input {
+  margin-top: 0.5rem;
+  display: block;
+  width: 100%;
+}
+
+.form__button {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 20px;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  transition: 300ms ease-in-out;
+}
+
+.form__button:hover {
+  background-color: rgb(78, 78, 78);
+}
+
+.form--space {
+  margin-top: 1rem;
 }

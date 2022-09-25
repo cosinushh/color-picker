@@ -1,31 +1,31 @@
 import "./Colorcard.css";
 import { useState } from "react";
 
-function Colorcard({ colorObject, removeColor }) {
+function Colorcard({ singleColor, removeColor, changeColor }) {
   const [showElement, setShowElement] = useState(false);
-  const [colorState, setColorState] = useState([colorObject]);
+
+  function clickHandle(event) {
+    navigator.clipboard.writeText(singleColor.hexValue);
+    console.log("copied!");
+    /* KANN MAN DAS EIN- UND AUSBLENDEN DER COPY-MESSAGE SO MACHEN? */
+    setShowElement(true);
+    setTimeout(() => {
+      setShowElement(false);
+    }, 750);
+  }
 
   return (
     <li
       className="colorcard"
-      style={{ backgroundColor: colorState[0].hexValue }}
-      onClick={(event) => {
-        event.stopPropagation();
-        navigator.clipboard.writeText(colorState[0].hexValue);
-        console.log("copied!");
-        /* KANN MAN DAS EIN- UND AUSBLENDEN DER COPY-MESSAGE SO MACHEN? */
-        setShowElement(true);
-        setTimeout(() => {
-          setShowElement(false);
-        }, 750);
-       
-      }}
+      style={{ backgroundColor: singleColor.hexValue }}
+      onClick={clickHandle}
     >
       <button
         type="button"
         className="colorcard__delete-button"
-        onClick={() => {
-          removeColor(colorState[0].id);
+        onClick={(event) => {
+          event.stopPropagation();
+          removeColor(singleColor.id);
         }}
       >
         <svg
@@ -40,19 +40,17 @@ function Colorcard({ colorObject, removeColor }) {
       <div className="colorcard__textarea">
         <input
           className="colorcard__hex"
-          defaultValue={colorState[0].hexValue}
+          defaultValue={singleColor.hexValue}
           size="10"
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
           onChange={(event) => {
-            setColorState([
-              {
-                ...colorState[0],
-                hexValue: event.target.value,
-              },
-            ]);
-            console.log(colorState);
+            const newHex = event.target.value;
+            changeColor(singleColor.id, newHex);
           }}
         />
-        <h3 className="colorcard__name">{colorState[0].colorName}</h3>
+        <h3 className="colorcard__name">{singleColor.colorName}</h3>
       </div>
     </li>
   );
