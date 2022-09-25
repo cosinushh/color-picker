@@ -41,26 +41,25 @@ function App() {
     localStorage.setItem("colors", JSON.stringify(colors));
   }, [colors]);
 
-  async function getColorName(hexValue, callbackFunction) {
+  async function getColorName(hexValue) {
     const modifiedHexValue = hexValue.substring(1);
     const response = await fetch(
       `https://www.thecolorapi.com/id?hex=${modifiedHexValue}`
     );
     const data = await response.json();
-    //console.log(data.name.value);
+    return data.name.value;
   }
 
-  function addColor(newColor) {
-    const newColorName = getColorName(newColor);
+  async function addColor(newColor) {
+    const newColorName = await getColorName(newColor);
     setColors([
       {
         id: Math.random().toString(36).substring(2),
         hexValue: newColor,
-        colorName: "Default",
+        colorName: newColorName,
       },
       ...colors,
     ]);
-    console.log(newColorName);
   }
 
   function removeColor(colorId) {
@@ -71,17 +70,17 @@ function App() {
     console.log(colors);
   }
 
-  function changeColor(colorId, newHex) {
+  async function changeColor(colorId, newHex) {
+    const newColorName = await getColorName(newHex);
     setColors(
       colors.map((color) => {
         if (color.id === colorId) {
-          return { ...color, hexValue: newHex };
+          return { ...color, hexValue: newHex, colorName: newColorName };
         } else {
           return color;
         }
       })
     );
-    //console.log(colors);
   }
 
   return (
