@@ -25,6 +25,10 @@
   font-size: 1rem;
 }
 
+.colorcard__hex:focus {
+  outline: none;
+}
+
 .colorcard__textarea {
   padding: 0.5rem;
   background-color: white;
@@ -66,4 +70,3 @@
 .card__delete--active {
   color: yellow;
 }
-

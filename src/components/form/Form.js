@@ -19,7 +19,11 @@ function Form({ addColor, setId }) {
   // --- MAIN ---
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form
+      className="form"
+      onSubmit={handleSubmit}
+      /* style={{ backgroundColor: selectedColor }} */
+    >
       <label>
         Select a color:{" "}
         <input

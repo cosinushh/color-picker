@@ -103,7 +103,6 @@ function App() {
       return colorId !== color.id;
     });
     setColors(newColors);
-    console.log(colors);
   }
 
   async function changeColor(colorId, newHex) {
