@@ -161,10 +161,10 @@ function App() {
             removeColor={removeColor}
             changeColor={changeColor}
             addNewSet={addNewSet}
-            changeSetName={changeSetName}
-            removeSet={removeSet}
+            changeSetName={()=>{changeSetName(set.id)}}
+            removeSet={()=>{removeSet(set.id)}}
             key={set.id}
-            id={set.id}
+            //id={set.id}
           />
         );
       })}
