@@ -85,14 +85,14 @@ function App() {
     return data.name.value;
   }
 
-  function addColor(newColor, setId) {
-    //const newColorName = await getColorName(newColor);
+  async function addColor(newColor, setId) {
+    const newColorName = await getColorName(newColor);
     setColors([
       {
         id: Math.random().toString(36).substring(2),
         setId: setId,
         hexValue: newColor,
-        //colorName: newColorName,
+        colorName: newColorName,
       },
       ...colors,
     ]);
@@ -128,11 +128,12 @@ function App() {
     ]);
   }
 
-  function changeSetName(setId, NewSetName) {
+  function changeSetName(setId, newSetName) {
+    console.log(setId, newSetName);
     setSets(
       sets.map((set) => {
         if (set.id === setId) {
-          return { ...set, setName: NewSetName };
+          return { ...set, setName: newSetName };
         } else {
           return set;
         }
@@ -161,10 +162,13 @@ function App() {
             removeColor={removeColor}
             changeColor={changeColor}
             addNewSet={addNewSet}
-            changeSetName={()=>{changeSetName(set.id)}}
-            removeSet={()=>{removeSet(set.id)}}
+            changeSetName={() => {
+              changeSetName(set.id);
+            }}
+            removeSet={() => {
+              removeSet(set.id);
+            }}
             key={set.id}
-            //id={set.id}
           />
         );
       })}
