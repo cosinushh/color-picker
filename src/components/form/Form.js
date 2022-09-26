@@ -47,7 +47,7 @@ function Form({ addColor, setId }) {
         onChange={(event) => {
           setSelectedColor(event.target.value);
         }}
-        defaultValue={selectedColor.toUpperCase()}
+        value={selectedColor.toUpperCase()}
       />
       <button className="form__button" type="submit">
         Add

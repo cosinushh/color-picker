@@ -4,15 +4,14 @@ import { useState } from "react";
 function Colorcard({ singleColor, removeColor, changeColor }) {
   //
   // --- STATES ---
-  
+
   const [showElement, setShowElement] = useState(false);
 
   //
   // --- HANDLES ---
 
-  function clickHandle(event) {
+  function clickHandle() {
     navigator.clipboard.writeText(singleColor.hexValue);
-    /* KANN MAN DAS EIN- UND AUSBLENDEN DER COPY-MESSAGE SO MACHEN? */
     setShowElement(true);
     setTimeout(() => {
       setShowElement(false);
