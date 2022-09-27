@@ -85,14 +85,14 @@ function App() {
     return data.name.value;
   }
 
-  function addColor(newColor, setId) {
-    //const newColorName = await getColorName(newColor);
+  async function addColor(newColor, setId) {
+    const newColorName = await getColorName(newColor);
     setColors([
       {
         id: Math.random().toString(36).substring(2),
         setId: setId,
         hexValue: newColor,
-        //colorName: newColorName,
+        colorName: newColorName,
       },
       ...colors,
     ]);
