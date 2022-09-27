@@ -8,7 +8,7 @@ function Form({ addColor, setId }) {
   const [selectedColor, setSelectedColor] = useState("");
 
   //
-  // --- HANDLES ---
+  // --- HANDLER ---
 
   function handleSubmit(event) {
     event.preventDefault();
