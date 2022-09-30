@@ -8,9 +8,9 @@ function Cardset({
   removeColor,
   changeColor,
   title,
-  //id,
   changeSetName,
   removeSet,
+  id,
 }) {
   //
   // --- MAIN ---
@@ -27,7 +27,7 @@ function Cardset({
         }}
       />
 
-      <Form addColor={addColor} /* setId={id} */ />
+      <Form addColor={addColor} setId={id} />
 
       <ul className="cardset__colorcards">
         {colors.map((color) => {
