@@ -8,28 +8,26 @@ function Cardset({
   removeColor,
   changeColor,
   title,
-  id,
+  //id,
   changeSetName,
   removeSet,
 }) {
-  
   //
   // --- MAIN ---
-  
+
   return (
     <section className="cardset">
-      
       <input
         className="cardset__title"
         type="text"
         defaultValue={title}
         onChange={(event) => {
           const newSetName = event.target.value;
-          changeSetName(id, newSetName);
+          changeSetName(newSetName);
         }}
       />
 
-      <Form addColor={addColor} setId={id} />
+      <Form addColor={addColor} /* setId={id} */ />
 
       <ul className="cardset__colorcards">
         {colors.map((color) => {
@@ -48,7 +46,7 @@ function Cardset({
         type="button"
         className="colorcard__button"
         onClick={(event) => {
-          removeSet(id);
+          removeSet();
         }}
       >
         REMOVE SET

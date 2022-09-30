@@ -128,11 +128,12 @@ function App() {
     ]);
   }
 
-  function changeSetName(setId, NewSetName) {
+  function changeSetName(setId, newSetName) {
+    console.log(setId, newSetName);
     setSets(
       sets.map((set) => {
         if (set.id === setId) {
-          return { ...set, setName: NewSetName };
+          return { ...set, setName: newSetName };
         } else {
           return set;
         }
@@ -161,10 +162,13 @@ function App() {
             removeColor={removeColor}
             changeColor={changeColor}
             addNewSet={addNewSet}
-            changeSetName={changeSetName}
-            removeSet={removeSet}
+            changeSetName={(newSetName)=>changeSetName(set.id, newSetName)
+            }
+            removeSet={() => {
+              removeSet(set.id);
+            }}
             key={set.id}
-            id={set.id}
+            //id={set.id}
           />
         );
       })}
